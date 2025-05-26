@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h4>Start a Private Chat</h4>
+<ul class="list-group">
+  {% for user in users %}
+    <li class="list-group-item d-flex justify-content-between">
+      {{ user.username }}
+      <a href="{% url 'private_chat' user.username %}" class="btn btn-sm btn-primary">Chat</a>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,16 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+
+# Django stuff
+db.sqlite3
+*.log
+media/
+staticfiles/
+
+# VSCode/MacOS
+.vscode/
+.DS_Store
