@@ -43,7 +43,6 @@ def room(request, room_name):
     })
 
 
-
 def register_view(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
