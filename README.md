@@ -1,4 +1,4 @@
-Realtime Chat App 🟣💬
+Realtime Chat App 
 
 A modern real-time chat application built with Django, Django Channels, WebSockets, and Bootstrap. 
 Features include:
