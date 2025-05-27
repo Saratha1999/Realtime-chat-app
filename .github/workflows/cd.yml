@@ -38,11 +38,16 @@ jobs:
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: ubuntu  # 🔁 Use 'ec2-user' if using Amazon Linux
+          username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            docker pull ${{ steps.login-ecr.outputs.registry }}/realtime-chat-app:latest
+            aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin ${{ secrets.ECR_REGISTRY }}
+            
+            docker pull ${{ secrets.ECR_REGISTRY }}/realtime-chat-app:latest
+            
             docker stop realtime-chat || true && docker rm realtime-chat || true
+            
             docker run -d --name realtime-chat \
               -p 8000:8000 \
-              ${{ steps.login-ecr.outputs.registry }}/realtime-chat-app:latest
+              ${{ secrets.ECR_REGISTRY }}/realtime-chat-app:latest
+
